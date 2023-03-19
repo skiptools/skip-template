@@ -1,0 +1,25 @@
+name: skip-template ci
+
+on:
+  push:
+    branches: '*'
+  schedule:
+    - cron:  '12 * * * *'
+
+jobs:
+  skip-template-tests:
+    # needs: https://github.com/actions/runner-images/issues/6426
+    #runs-on: macos-13
+    runs-on: macos-12
+    steps:
+      - name: Install tools
+        run: brew install tree
+      - name: Checkout skip-template
+        uses: actions/checkout@v3
+      - name: Check skiptool
+        run: swift package --disable-sandbox --allow-writing-to-package-directory skip info
+      - name: Run DemoLibKotlin tests
+        run: xcodebuild test -skipPackagePluginValidation -configuration Debug -sdk "macosx" -destination "platform=macosx" -scheme DemoLibKotlin
+      - name: Show PlugIn Output Tree
+        run: tree -I build -l ~/Library/Developer/Xcode/DerivedData/*/SourcePackages/plugins/skip-template.output/DemoLibKotlinTests
+
