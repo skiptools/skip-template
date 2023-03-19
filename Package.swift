@@ -14,9 +14,6 @@ let package = Package(
     products: [
         .library(name: "DemoLib", targets: ["DemoLib"]),
         .library(name: "DemoLibKotlin", targets: ["DemoLibKotlin"]),
-
-//        .library(name: "DemoApp", targets: ["DemoApp"]),
-//        .library(name: "DemoAppKotlin", targets: ["DemoAppKotlin"]),
     ],
     dependencies: [
         .package(url: "https://github.com/skiptools/skip.git", from: "0.0.0"),
@@ -35,11 +32,6 @@ let package = Package(
             .product(name: "SkipUnit", package: "skip-core"),
             .product(name: "SkipUnitKotlin", package: "skip-core")
         ], resources: [.copy("skip")], plugins: [.plugin(name: "transpile", package: "skip")]),
-
-//        .target(name: "DemoApp", dependencies: [.product(name: "SkipUI", package: "skip-core"), "DemoLib"]),
-//        .gradle(name: "DemoApp", dependencies: [.product(name: "SkipUIKotlin", package: "skip-core"), "DemoLib"]),
-//        .testTarget(name: "DemoAppTests", dependencies: ["DemoApp"]),
-//        .testGradle(name: "DemoAppTests", dependencies: ["DemoApp"]),
     ]
 )
 
