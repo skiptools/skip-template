@@ -24,13 +24,14 @@ let package = Package(
     ],
     targets: [
         .target(name: "DemoLib", dependencies: [.product(name: "SkipFoundation", package: "skip-core")]),
+        .testTarget(name: "DemoLibTests", dependencies: ["DemoLib"]),
+
         .target(name: "DemoLibKotlin", dependencies: [
             "DemoLib",
             .product(name: "SkipFoundationKotlin", package: "skip-core"),
         ], resources: [.copy("skip")], plugins: [.plugin(name: "transpile", package: "skip")]),
-
-        .testTarget(name: "DemoLibTests", dependencies: ["DemoLib"]),
         .testTarget(name: "DemoLibKotlinTests", dependencies: [
+            "DemoLibKotlin",
             .product(name: "SkipUnit", package: "skip-core"),
             .product(name: "SkipUnitKotlin", package: "skip-core")
         ], resources: [.copy("skip")], plugins: [.plugin(name: "transpile", package: "skip")]),
