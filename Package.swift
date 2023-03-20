@@ -23,7 +23,6 @@ let package = Package(
         .target(name: "DemoLib"),
         .testTarget(name: "DemoLibTests", dependencies: [
             "DemoLib",
-            .product(name: "SkipFoundation", package: "skip-core"),
         ]),
 
         .target(name: "DemoLibKotlin", dependencies: [
