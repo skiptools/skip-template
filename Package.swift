@@ -4,13 +4,7 @@ import PackageDescription
 let package = Package(
     name: "skip-template",
     defaultLocalization: "en",
-    platforms: [
-        .iOS(.v15),
-        .macOS(.v12),
-        .tvOS(.v15),
-        .watchOS(.v8),
-        .macCatalyst(.v15),
-    ],
+    platforms: [.iOS(.v15), .macOS(.v12), .tvOS(.v15), .watchOS(.v8), .macCatalyst(.v15)],
     products: [
         .library(name: "DemoLib", targets: ["DemoLib"]),
         .library(name: "DemoLibKotlin", targets: ["DemoLibKotlin"]),
