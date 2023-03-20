@@ -20,8 +20,11 @@ let package = Package(
         .package(url: "https://github.com/skiptools/skip-core.git", from: "0.0.0"),
     ],
     targets: [
-        .target(name: "DemoLib", dependencies: [.product(name: "SkipFoundation", package: "skip-core")]),
-        .testTarget(name: "DemoLibTests", dependencies: ["DemoLib"]),
+        .target(name: "DemoLib"),
+        .testTarget(name: "DemoLibTests", dependencies: [
+            "DemoLib",
+            .product(name: "SkipFoundation", package: "skip-core"),
+        ]),
 
         .target(name: "DemoLibKotlin", dependencies: [
             "DemoLib",
@@ -30,7 +33,7 @@ let package = Package(
         .testTarget(name: "DemoLibKotlinTests", dependencies: [
             "DemoLibKotlin",
             .product(name: "SkipUnit", package: "skip-core"),
-            .product(name: "SkipUnitKotlin", package: "skip-core")
+            .product(name: "SkipUnitKotlin", package: "skip-core"),
         ], resources: [.copy("skip")], plugins: [.plugin(name: "transpile", package: "skip")]),
     ]
 )
