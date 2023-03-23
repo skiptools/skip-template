@@ -15,8 +15,15 @@ final class DemoLibTests: XCTestCase {
         XCTAssertEqual(3.0 + 1.5, 9.0/2)
         XCTAssertEqual("DemoLib", DemoLibInternalModuleName())
         XCTAssertEqual("DemoLib", DemoLibPublicModuleName())
-        //XCTAssertEqual("SkipFoundation", SkipFoundationPublicModuleName())
 
+        // test test failure parsing and line number linking
+        XCTAssertEqual("DemoLib", DemoLibInternalModuleName())
+
+        //XCTAssertEqual("SkipFoundation", SkipFoundationPublicModuleName())
+    }
+
+    // SKIP INSERT: @Test
+    func testThrow1MillionErrors() throws {
         for _ in 1...1_000_000 {
             do {
                 throw SomeError()
@@ -25,7 +32,53 @@ final class DemoLibTests: XCTestCase {
             }
         }
     }
-}
 
-struct SomeError : Error {
+    struct SomeError : Error {
+    }
+
+    // SKIP INSERT: @Test
+    func testInternalStructs() throws {
+        // by default the classes will be generated as "internal class", which is invalid within a function
+
+        // SKIP REPLACE: class Foo { var bar = 2 }
+        struct Foo { var bar = 2 }
+
+        XCTAssertEqual(2, Foo().bar)
+    }
+
+
+    // SKIP INSERT: @Test
+    func testEnumsAssociatedCases() throws {
+        //XCTAssertTrue(JSONType.nullX is JSONType)
+
+        //let nullXValue: JSONType = .nullX // DemoLibTests.kt:53:45 Classifier 'nullX' does not have a companion object, and thus must be initialized here
+        //XCTAssertNotNil(nullXValue)
+
+        let booleanValue: JSONType = .boolean(true)
+        XCTAssertNotNil(booleanValue)
+
+        let stringValue: JSONType = .string("ABC")
+        XCTAssertNotNil(stringValue)
+
+        let numberValue: JSONType = .number(123.456)
+        XCTAssertNotNil(numberValue)
+
+        let objectXValue: JSONType = .objectX(["key": JSONType.number(123.456)])
+        XCTAssertNotNil(objectXValue)
+
+        let arrayValue: JSONType = .array([JSONType.string("ABC"), JSONType.boolean(false)])
+        XCTAssertNotNil(arrayValue)
+    }
+
+    enum JSONType {
+        //case null // DemoLibTests.kt:58:11 Name expected
+        case nullX
+        case boolean(Bool)
+        case string(String)
+        case number(Double)
+        //case object([String: JSONType]) // ERROR: DemoLibTests.kt:67:17 Constructors are not allowed for objects
+        case objectX([String: JSONType]) // ERROR: DemoLibTests.kt:67:17 Constructors are not allowed for objects
+        case array([JSONType])
+    }
+
 }
