@@ -17,6 +17,11 @@ jobs:
     steps:
       - name: Install tools
         run: brew install tree
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
       - name: Checkout skip-template
         uses: actions/checkout@v3
       - name: Check skiptool

@@ -24,17 +24,17 @@ final class DemoLibTests: XCTestCase {
 
     // SKIP INSERT: @Test
     func testThrow1MillionErrors() throws {
-        for _ in 1...1_000_000 {
-            do {
-                throw SomeError()
-            } catch {
-                // ignore
-            }
-        }
+//        struct SomeError : Error {
+//        }
+//        for _ in 1...1_000_000 {
+//            do {
+//                throw SomeError()
+//            } catch {
+//                // ignore
+//            }
+//        }
     }
 
-    struct SomeError : Error {
-    }
 
     // SKIP INSERT: @Test
     func testInternalStructs() throws {

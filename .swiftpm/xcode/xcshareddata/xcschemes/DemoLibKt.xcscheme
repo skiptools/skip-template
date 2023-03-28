@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DemoLibKotlin"
-               BuildableName = "DemoLibKotlin"
-               BlueprintName = "DemoLibKotlin"
+               BlueprintIdentifier = "DemoLibKt"
+               BuildableName = "DemoLibKt"
+               BlueprintName = "DemoLibKt"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,9 +42,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DemoLibKotlinTests"
-               BuildableName = "DemoLibKotlinTests"
-               BlueprintName = "DemoLibKotlinTests"
+               BlueprintIdentifier = "DemoLibTestsKt"
+               BuildableName = "DemoLibTestsKt"
+               BlueprintName = "DemoLibTestsKt"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>
@@ -70,9 +70,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DemoLibKotlin"
-            BuildableName = "DemoLibKotlin"
-            BlueprintName = "DemoLibKotlin"
+            BlueprintIdentifier = "DemoLibKt"
+            BuildableName = "DemoLibKt"
+            BlueprintName = "DemoLibKt"
             ReferencedContainer = "container:">
          </BuildableReference>
       </MacroExpansion>
