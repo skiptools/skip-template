@@ -11,7 +11,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/skiptools/skip.git", from: "0.0.0"),
-        .package(url: "https://github.com/skiptools/skip-core.git", from: "0.0.0"),
+        .package(url: "https://github.com/skiptools/skiphub.git", from: "0.0.0"),
     ],
     targets: [
         .target(name: "DemoLib"),
@@ -21,12 +21,12 @@ let package = Package(
 
         .target(name: "DemoLibKt", dependencies: [
             "DemoLib",
-            .product(name: "SkipFoundationKt", package: "skip-core"),
+            .product(name: "SkipFoundationKt", package: "skiphub"),
         ], resources: [.copy("skip")], plugins: [.plugin(name: "transpile", package: "skip")]),
         .testTarget(name: "DemoLibTestsKt", dependencies: [
             "DemoLibKt",
-            .product(name: "SkipUnit", package: "skip-core"),
-            .product(name: "SkipUnitKt", package: "skip-core"),
+            .product(name: "SkipUnit", package: "skiphub"),
+            .product(name: "SkipUnitKt", package: "skiphub"),
         ], resources: [.copy("skip")], plugins: [.plugin(name: "transpile", package: "skip")]),
     ]
 )
@@ -35,5 +35,5 @@ import class Foundation.ProcessInfo
 if let localPath = ProcessInfo.processInfo.environment["SKIPLOCAL"] {
     // build agains the local relative packages in the peer folders by running: SKIPLOCAL=.. xed Package.swift
     package.dependencies[0] = Package.Dependency.package(path: localPath + "/skip")
-    package.dependencies[1] = Package.Dependency.package(path: localPath + "/skip-core")
+    package.dependencies[1] = Package.Dependency.package(path: localPath + "/skiphub")
 }

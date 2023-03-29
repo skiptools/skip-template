@@ -32,16 +32,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DemoLibTests"
-               BuildableName = "DemoLibTests"
-               BlueprintName = "DemoLibTests"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "DemoLibTestsKt"
                BuildableName = "DemoLibTestsKt"
                BlueprintName = "DemoLibTestsKt"
