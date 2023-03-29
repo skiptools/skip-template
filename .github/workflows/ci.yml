@@ -15,8 +15,6 @@ jobs:
     #runs-on: macos-13
     runs-on: macos-12
     steps:
-      - name: Install tools
-        run: brew install tree
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
@@ -28,10 +26,10 @@ jobs:
         run: swift package --disable-sandbox --allow-writing-to-package-directory skip info
       - name: Build DemoLib
         run: swift build
-      - name: Pre-cache Swift modules
-        run: for module in DemoLib OSLog Darwin os XCTest ; do /usr/bin/xcrun swift symbolgraph-extract -module-name ${module} -include-spi-symbols -skip-inherited-docs -skip-synthesized-members -output-dir $TMPDIR -target x86_64-apple-macosx12.0 -sdk /Applications/Xcode_14.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -F /Applications/Xcode_14.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/../../Library/Frameworks/ -minimum-access-level internal -I .build/debug/ ; done
-      - name: Run DemoLibKotlin tests
-        run: xcodebuild test -skipPackagePluginValidation -configuration Debug -sdk "macosx" -destination "platform=macosx" -scheme DemoLibKotlin
+      - name: Run DemoLibKt tests
+        run: xcodebuild test -skipPackagePluginValidation -configuration Debug -sdk "macosx" -destination "platform=macosx" -scheme DemoLibKt
       - name: Show PlugIn Output Tree
-        run: tree -I build -l ~/Library/Developer/Xcode/DerivedData/*/SourcePackages/plugins/skip-template.output/DemoLibKotlinTests
+        run: |
+          brew install tree
+          tree -I build -l ~/Library/Developer/Xcode/DerivedData/*/SourcePackages/plugins/skip-template.output/DemoLibTestsKt
 
