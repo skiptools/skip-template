@@ -17,7 +17,7 @@ cd skip-template/
 You can then run the test cases with:
 
 ```shell
-xcodebuild test -configuration Debug -sdk "macosx" -destination "platform=macosx" -skipPackagePluginValidation -scheme DemoLibKotlin
+xcodebuild test -configuration Debug -sdk "macosx" -destination "platform=macosx" -skipPackagePluginValidation -scheme TemplateLibKotlin
 ```
 
 

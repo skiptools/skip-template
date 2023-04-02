@@ -6,25 +6,25 @@ let package = Package(
     defaultLocalization: "en",
     platforms: [.iOS(.v15), .macOS(.v12), .tvOS(.v15), .watchOS(.v8), .macCatalyst(.v15)],
     products: [
-        .library(name: "DemoLib", targets: ["DemoLib"]),
-        .library(name: "DemoLibKt", targets: ["DemoLibKt"]),
+        .library(name: "TemplateLib", targets: ["TemplateLib"]),
+        .library(name: "TemplateLibKt", targets: ["TemplateLibKt"]),
     ],
     dependencies: [
         .package(url: "https://github.com/skiptools/skip.git", from: "0.0.0"),
         .package(url: "https://github.com/skiptools/skiphub.git", from: "0.0.0"),
     ],
     targets: [
-        .target(name: "DemoLib"),
-        .testTarget(name: "DemoLibTests", dependencies: [
-            "DemoLib",
+        .target(name: "TemplateLib"),
+        .testTarget(name: "TemplateLibTests", dependencies: [
+            "TemplateLib",
         ]),
 
-        .target(name: "DemoLibKt", dependencies: [
-            "DemoLib",
+        .target(name: "TemplateLibKt", dependencies: [
+            "TemplateLib",
             .product(name: "SkipFoundationKt", package: "skiphub"),
         ], resources: [.copy("skip")], plugins: [.plugin(name: "transpile", package: "skip")]),
-        .testTarget(name: "DemoLibTestsKt", dependencies: [
-            "DemoLibKt",
+        .testTarget(name: "TemplateLibTestsKt", dependencies: [
+            "TemplateLibKt",
             .product(name: "SkipUnit", package: "skiphub"),
             .product(name: "SkipUnitKt", package: "skiphub"),
         ], resources: [.copy("skip")], plugins: [.plugin(name: "transpile", package: "skip")]),

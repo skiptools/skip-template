@@ -5,18 +5,18 @@
 // as published by the Free Software Foundation https://fsf.org
 import Foundation
 import XCTest
-@testable import DemoLib
+@testable import TemplateLib
 
-final class DemoLibTests: XCTestCase {
-    func testDemoLib() throws {
-        print("running testDemoLib test")
+final class TemplateLibTests: XCTestCase {
+    func testTemplateLib() throws {
+        print("running testTemplateLib test")
         
         XCTAssertEqual(3.0 + 1.5, 9.0/2)
-        XCTAssertEqual("DemoLib", DemoLibInternalModuleName())
-        XCTAssertEqual("DemoLib", DemoLibPublicModuleName())
+        XCTAssertEqual("TemplateLib", TemplateLibInternalModuleName())
+        XCTAssertEqual("TemplateLib", TemplateLibPublicModuleName())
 
         // test test failure parsing and line number linking
-        XCTAssertEqual("DemoLib", DemoLibInternalModuleName())
+        XCTAssertEqual("TemplateLib", TemplateLibInternalModuleName())
 
         //XCTAssertEqual("SkipFoundation", SkipFoundationPublicModuleName())
     }
@@ -47,7 +47,7 @@ final class DemoLibTests: XCTestCase {
     func testEnumsAssociatedCases() throws {
         //XCTAssertTrue(JSONType.nullX is JSONType)
 
-        //let nullXValue: JSONType = .nullX // DemoLibTests.kt:53:45 Classifier 'nullX' does not have a companion object, and thus must be initialized here
+        //let nullXValue: JSONType = .nullX // TemplateLibTests.kt:53:45 Classifier 'nullX' does not have a companion object, and thus must be initialized here
         //XCTAssertNotNil(nullXValue)
 
         let booleanValue: JSONType = .boolean(true)
@@ -67,13 +67,13 @@ final class DemoLibTests: XCTestCase {
     }
 
     enum JSONType {
-        //case null // DemoLibTests.kt:58:11 Name expected
+        //case null // TemplateLibTests.kt:58:11 Name expected
         case nullX
         case boolean(Bool)
         case string(String)
         case number(Double)
-        //case object([String: JSONType]) // ERROR: DemoLibTests.kt:67:17 Constructors are not allowed for objects
-        case objectX([String: JSONType]) // ERROR: DemoLibTests.kt:67:17 Constructors are not allowed for objects
+        //case object([String: JSONType]) // ERROR: TemplateLibTests.kt:67:17 Constructors are not allowed for objects
+        case objectX([String: JSONType]) // ERROR: TemplateLibTests.kt:67:17 Constructors are not allowed for objects
         case array([JSONType])
     }
 

@@ -3,12 +3,8 @@
 // This is free software: you can redistribute and/or modify it
 // under the terms of the GNU Lesser General Public License 3.0
 // as published by the Free Software Foundation https://fsf.org
-import Foundation
-
-internal func DemoLibInternalModuleName() -> String {
-    return "DemoLib"
+import class Foundation.Bundle
+public extension Bundle {
+    static let TemplateLibKotlin = Bundle.module
 }
 
-public func DemoLibPublicModuleName() -> String {
-    return "DemoLib"
-}

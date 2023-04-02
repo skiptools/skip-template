@@ -3,12 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleName</key>
-	<string>Example Lib</string>
+	<string>Skip Template Lib</string>
 	<key>CFBundleShortVersionString</key>
 	<string>0.0.0</string>
 	<key>CFBundleVersion</key>
 	<string>0</string>
 	<key>CFBundleIdentifier</key>
-	<string>example.lib</string>
+	<string>template.lib</string>
 </dict>
 </plist>
