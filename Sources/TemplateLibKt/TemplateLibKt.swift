@@ -5,6 +5,6 @@
 // as published by the Free Software Foundation https://fsf.org
 import class Foundation.Bundle
 public extension Bundle {
-    static let TemplateLibKotlin = Bundle.module
+    static let TemplateLibKtModule = Bundle.module
 }
 

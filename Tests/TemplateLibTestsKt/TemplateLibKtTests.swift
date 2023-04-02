@@ -6,5 +6,5 @@
 import SkipUnit
 
 /// This test case will run the transpiled tests for the module, as implemented by `JUnitTestCase.testProjectGradle()`
-final class KotlinProjectTestCase: JUnitTestCase {
+final class TemplateLibKtTests: JUnitTestCase {
 }
