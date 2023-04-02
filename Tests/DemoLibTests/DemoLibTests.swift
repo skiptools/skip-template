@@ -8,7 +8,6 @@ import XCTest
 @testable import DemoLib
 
 final class DemoLibTests: XCTestCase {
-    // SKIP INSERT: @Test
     func testDemoLib() throws {
         print("running testDemoLib test")
         
@@ -22,7 +21,6 @@ final class DemoLibTests: XCTestCase {
         //XCTAssertEqual("SkipFoundation", SkipFoundationPublicModuleName())
     }
 
-    // SKIP INSERT: @Test
     func testThrow1MillionErrors() throws {
 //        struct SomeError : Error {
 //        }
@@ -36,7 +34,6 @@ final class DemoLibTests: XCTestCase {
     }
 
 
-    // SKIP INSERT: @Test
     func testInternalStructs() throws {
         // by default the classes will be generated as "internal class", which is invalid within a function
 
@@ -47,7 +44,6 @@ final class DemoLibTests: XCTestCase {
     }
 
 
-    // SKIP INSERT: @Test
     func testEnumsAssociatedCases() throws {
         //XCTAssertTrue(JSONType.nullX is JSONType)
 
