@@ -48,6 +48,7 @@ package.targets += [
 
 
 
+```
 The files needed for these targets may need ti be created by running
 the following shell commands from the project root folder:
 

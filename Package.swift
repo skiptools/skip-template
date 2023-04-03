@@ -42,7 +42,6 @@ package.targets += [
 ]
 
 
-
 import class Foundation.ProcessInfo
 // For Skip library development in peer directories, run: SKIPLOCAL=.. xed Package.swift
 if let localPath = ProcessInfo.processInfo.environment["SKIPLOCAL"] {
