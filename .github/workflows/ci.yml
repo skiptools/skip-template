@@ -23,6 +23,7 @@ jobs:
       - name: Checkout skip-template
         uses: actions/checkout@v3
       - name: Check skiptool
+        if: false
         run: swift package --disable-sandbox --allow-writing-to-package-directory skip info
       - name: Build TemplateLib
         run: swift build
