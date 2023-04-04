@@ -18,6 +18,18 @@ let package = Package(
 package.dependencies += [.package(url: "https://github.com/skiptools/skip.git", from: "0.0.0")]
 package.dependencies += [.package(url: "https://github.com/skiptools/skiphub.git", from: "0.0.0")]
 
+import class Foundation.ProcessInfo
+// For Skip library development in peer directories, run: SKIPLOCAL=.. xed Package.swift
+if let localPath = ProcessInfo.processInfo.environment["SKIPLOCAL"] {
+    // locally linking SwiftSyntax requires explicit min platform targets
+    package.platforms = package.platforms ?? [.iOS(.v15), .macOS(.v12), .tvOS(.v15), .watchOS(.v8), .macCatalyst(.v15)]
+    package.dependencies[package.dependencies.count - 2] = .package(path: localPath + "/skip")
+    package.dependencies[package.dependencies.count - 1] = .package(path: localPath + "/skiphub")
+}
+
+
+// MARK: Skip Kotlin Peer Targets
+
 
 package.products += [
     .library(name: "TemplateLibKt", targets: ["TemplateLibKt"])
@@ -41,12 +53,3 @@ package.targets += [
     plugins: [.plugin(name: "transpile", package: "skip")])
 ]
 
-
-import class Foundation.ProcessInfo
-// For Skip library development in peer directories, run: SKIPLOCAL=.. xed Package.swift
-if let localPath = ProcessInfo.processInfo.environment["SKIPLOCAL"] {
-    // locally linking SwiftSyntax requires explicit min platform targets
-    package.platforms = package.platforms ?? [.iOS(.v15), .macOS(.v12), .tvOS(.v15), .watchOS(.v8), .macCatalyst(.v15)]
-    package.dependencies[package.dependencies.count - 2] = .package(path: localPath + "/skip")
-    package.dependencies[package.dependencies.count - 1] = .package(path: localPath + "/skiphub")
-}

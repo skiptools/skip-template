@@ -23,6 +23,8 @@ the bottom of the project's `Package.swift` file:
 ```
 // MARK: Skip Kotlin Peer Targets
 
+// MARK: Skip Kotlin Peer Targets
+
 
 package.products += [
     .library(name: "TemplateLibKt", targets: ["TemplateLibKt"])
