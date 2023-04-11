@@ -1,4 +1,3 @@
-name: skip-template ci
 
 env:
   DEVELOPER_DIR: /Applications/Xcode_14.2.app/Contents/Developer
@@ -20,15 +19,25 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-      - name: Checkout skip-template
+
+      - name: Checkout Repository
         uses: actions/checkout@v3
+
       - name: Check skiptool
         run: swift package --disable-sandbox --allow-writing-to-package-directory skip info
-      - name: Build TemplateLib
-        run: swift build
-      - name: Run TemplateLibKt tests
+
+      - name: Test TemplateLibKt (SPM)
+        run: swift test
+
+      - name: Show PlugIn Output Tree (SPM)
+        run: |
+          brew install tree
+          tree -I build -l .build/plugins/outputs/skip-template/TemplateLibTestsKt
+
+      - name: Test TemplateLibKt (Xcode)
         run: xcodebuild test -skipPackagePluginValidation -configuration Debug -sdk "macosx" -destination "platform=macosx" -scheme TemplateLibKt
-      - name: Show PlugIn Output Tree
+
+      - name: Show PlugIn Output Tree (Xcode)
         run: |
           brew install tree
           tree -I build -l ~/Library/Developer/Xcode/DerivedData/*/SourcePackages/plugins/skip-template.output/TemplateLibTestsKt
