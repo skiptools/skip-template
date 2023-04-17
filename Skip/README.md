@@ -40,8 +40,8 @@ package.targets += [
 ]
 
 package.targets += [
-    .testTarget(name: "TemplateLibTestsKt", dependencies: [
-    .target(name: "TemplateLibKt"),
+    .testTarget(name: "TemplateLibKtTests", dependencies: [
+        .target(name: "TemplateLibKt"),
         .product(name: "SkipUnitKt", package: "skiphub"),
     ],
     resources: [.copy("Skip")],
