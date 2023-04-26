@@ -28,12 +28,13 @@ jobs:
         run: swift package --disable-sandbox --allow-writing-to-package-directory skip info
 
       - name: Test TemplateLibKt (SPM)
-        run: swift test || true
+        run: swift test
 
       - name: Show PlugIn Output Tree (SPM)
         run: |
           brew install tree
-          tree -I build -l .build/plugins/outputs/skip-template/TemplateLibTestsKt
+          tree -I build -l .build/plugins/outputs
+          #tree -I build -l .build/plugins/outputs/skip-template/TemplateLibTestsKt
 
       - name: Test TemplateLibKt (Xcode)
         run: xcodebuild test -skipPackagePluginValidation -configuration Debug -sdk "macosx" -destination "platform=macosx" -scheme TemplateLibKt
