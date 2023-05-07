@@ -35,7 +35,7 @@ jobs:
           #tree -I build -l .build/plugins/outputs/skip-template/TemplateLibTestsKt
 
       - name: Test TemplateLibKt (Xcode)
-        run: xcodebuild test -skipPackagePluginValidation -configuration Debug -sdk "macosx" -destination "platform=macosx" -scheme TemplateLibKt
+        run: xcodebuild test -skipPackagePluginValidation -configuration Debug -sdk "macosx" -destination "platform=macosx" -scheme skip-template-Package
 
       - name: Show PlugIn Output Tree (Xcode)
         run: |
