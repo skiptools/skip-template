@@ -30,6 +30,10 @@ if let localPath = ProcessInfo.processInfo.environment["SKIPLOCAL"] {
 
 // MARK: Skip Kotlin Peer Targets
 
+for target in package.targets {
+    // add the transpiler preflight checks to the existing Swift targets
+    target.plugins = (target.plugins ?? []) + [.plugin(name: "preflight", package: "skip")]
+}
 
 package.products += [
     .library(name: "TemplateLibKt", targets: ["TemplateLibKt"])
