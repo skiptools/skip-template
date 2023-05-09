@@ -1,1 +1,7 @@
 # Skip configuration file for TemplateLib
+build:
+  contents:
+    - block: 'plugins'
+      export: false
+      contents:
+        - '`kotlin-dsl`'
