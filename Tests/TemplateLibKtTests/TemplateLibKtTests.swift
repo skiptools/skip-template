@@ -3,7 +3,13 @@
 // as published by the Free Software Foundation https://fsf.org
 import SkipUnit
 
-/// Do not modify. This is a bridge to the Gradle test case runner.
-/// New tests should be added to the `TemplateLibTests` module.
-class TemplateLibKtTests: JUnitTestCase {
+#if os(macOS) // Skip transpiled tests can only be run against macOS
+/// This test case will run the transpiled tests for the Skip module.
+final class TemplateLibKtTests: XCTestCase, XCGradleHarness {
+    /// This test case will run the transpiled tests defined in the Swift peer module.
+    /// New tests should be added there, not here.
+    public func testSkipModule() async throws {
+        try await gradle(actions: ["testDebug"])
+    }
 }
+#endif
